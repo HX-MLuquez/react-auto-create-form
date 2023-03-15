@@ -54,24 +54,6 @@ textarea {
   height: 200px;
 }
 
-.form-footer {
-  text-align: center;
-}
-
-.form-footer button {
-  padding: 10px 20px;
-  font-size: 24px;
-  background-color: #4669a0;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.form-footer button:hover {
-  background-color: #3367d6;
-}
-
 select {
   width: 100%;
   font-size: 24px;
@@ -85,4 +67,22 @@ select {
 
 select option {
   font-size: 24px;
+}
+
+
+.form-footer {
+  text-align: center;
+}
+.form-footer button {
+  padding: 10px 20px;
+  font-size: 24px;
+  background-color: #4669a0;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form-footer button:hover {
+  background-color: #3367d6;
 }
