@@ -1,18 +1,41 @@
-import React from 'react'
-import Part from './Part'
-import { db } from '../../utils/db.json'
+import React, { useState, useEffect } from "react";
+import "./Parts.css";
+import Part from "./Part";
 
-export default function Parts({db}) {
+export default function Parts() {
+  const [data, setData] = useState();
 
-    const data = db.items.toJson()
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch("../../utils/db.json");
+      console.log(response);
+      const jsonData = await response.json();
+      console.log(jsonData.items);
+      setData(jsonData.items);
+    };
+    fetchData();
+  }, []);
 
+  var type = "input";
+  let id = 1
   return (
     <div>
-        <h1>Parts</h1>
-        {
-            data.map(e=><Part props={e}></Part>)
-        }
-        
+      {type !== "submit" ? (
+        <div className="form-body">
+          <div className="form-group">
+            <div className="form-header">
+              <h2>Title</h2>
+            </div>
+          </div>
+          {data?.map((e) => (
+            <Part key={id++ + e.name} props={e}></Part>
+          ))}
+        </div>
+      ) : (
+        <div className="form-footer">
+          <button type="submit">Submit</button>
+        </div>
+      )}
     </div>
-  )
+  );
 }
