@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import List from "./component/List";
 import Form from "./component/Form";
 
+// import ListAuth from "./component/ListAuth"; // No funciona aún 
+
 function App() {
   return (
     <Router>

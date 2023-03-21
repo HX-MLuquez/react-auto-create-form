@@ -1,16 +1,33 @@
+// // npm install firebase
+
 import React, { useEffect, useState } from "react";
 
 import "./List.css";
 import { Link } from "react-router-dom";
 
-import firebase from "firebase/app";
-import "firebase/database";
+// import firebase from "firebase/app";
+// import "firebase/database";
+/*
+De No funcionar import firebase from "firebase/app"
+firebase/compat/app y firebase/compat/database, está importando las versiones compatibles 
+de Firebase para su proyecto. Esto debería permitirle utilizar todas las funciones y 
+características de Firebase sin problemas.
 
-// npm install firebase
+Probamos:
+*/
+import firebase from "firebase/compat/app";
+import "firebase/compat/database";
 
-import { initializeApp } from "firebase/app";
+// // Initialize Firebase
+
+// Import the functions you need from the SDKs you need
+// import { initializeApp } from "firebase/app"; // para otras versiones puede funcionar
 import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyCCKvZu80RuBGWUhdYlP-tguUshRPACimM",
   authDomain: "form-build-6ec5d.firebaseapp.com",
@@ -22,25 +39,40 @@ const firebaseConfig = {
   measurementId: "G-ECZY5L5H67",
 };
 
-firebase.initializeApp(firebaseConfig);
+// Initialize Firebase
+const app = firebase.initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
 const database = firebase.database();
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+import { getAuth } from 'firebase/auth';
 
-const List = () => {
+const ListAuth = () => {
   const [allForms, setallForms] = useState();
 
+  
+
+  const auth = getAuth();
+  const user = auth.currentUser;
+  var uid
+  if (user) {
+    uid = user.uid;
+    console.log('UID del usuario actual:', uid);
+  } else {
+    console.log('No hay usuario autenticado');
+  }
+/*
+NO FUNCIONA, falta authenticar el usuario y ver la config en firebase
+*/
   useEffect(() => {
-    const usersRef = database.ref("users");
+    const usersRef = database.ref(`users/${uid}`);
     usersRef
       .once("value")
       .then((snapshot) => {
         const data = snapshot.val();
-        console.log("data Auth: ",data);
-        setallForms(data);
+        // console.log("data Auth: ", data);
+        const result = Object.values(data);
+        setallForms(result);
       })
       .catch((error) => {
         console.error(error);
@@ -69,4 +101,13 @@ const List = () => {
   );
 };
 
-export default List;
+export default ListAuth;
+
+
+/*
+Esta versión es para trabajar con mayor protección de nuestros datos en nuestra db 
+en firebase realtime database
+
+Donde en la Reglas (Rules) seteamos:
+
+*/
