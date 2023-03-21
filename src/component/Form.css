@@ -1,4 +1,4 @@
-.form-component {
+.form_component {
   width: 50%;
   margin: 0 auto;
   background-color: #f4efef;
@@ -6,24 +6,24 @@
   border-radius: 2px;
 }
 
-.form-header {
+.form_header {
   text-align: center;
   margin-bottom: 20px;
 }
 
-.form-header h1 {
+.form_header h1 {
   font-size: 36px;
   margin: 0;
 }
 
-.form-body {
+.form_body {
   border: 1px solid #ccc;
   padding: 20px;
   border-radius: 5px;
   margin-bottom: 20px;
 }
 
-.form-group {
+.form_group {
   margin-bottom: 10px;
   width: 100%;
   border-radius: 3px;
@@ -37,7 +37,7 @@ label {
   margin-left: 2%;
 }
 
-.form-group label {
+.form_group label {
   display: block;
   font-size: 24px;
   margin-bottom: 10px;
@@ -50,7 +50,7 @@ textarea {
   margin: 2px;
 }
 
-.form-group textarea {
+.form_group textarea {
   height: 200px;
 }
 
@@ -70,19 +70,3 @@ select option {
 }
 
 
-.form-footer {
-  text-align: center;
-}
-.form-footer button {
-  padding: 10px 20px;
-  font-size: 24px;
-  background-color: #4669a0;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.form-footer button:hover {
-  background-color: #3367d6;
-}

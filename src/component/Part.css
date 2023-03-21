@@ -5,3 +5,20 @@
   -o-transform: scale(1.5); /* Opera */
   transform: scale(1.5);
 }
+
+.form_footer {
+  text-align: center;
+}
+.form_footer button {
+  padding: 10px 20px;
+  font-size: 24px;
+  background-color: #5a79aa;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form_footer button:hover {
+  background-color: #264da1;
+}
